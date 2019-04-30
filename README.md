@@ -49,6 +49,8 @@ table {
 
 css 1像素边框解决方案：
 
+使用方法：在盒子上加入`border-bottom`的类
+
 ```css
 @charset "utf-8";
 .border,
