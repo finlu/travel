@@ -303,3 +303,10 @@ ellipsis()
 ```sty
 ellipsis()
 ```
+
+在Vue中发送`ajax`请求：使用axios
+
+安装`axios`
+```shell
+npm install axios --save
+```
