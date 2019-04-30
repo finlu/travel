@@ -1,3 +1,7 @@
+第三方开源组件集锦：
+1. vue轮播组件：https://github.com/surmon-china/vue-awesome-swiper
+
+
 css初始化文件：
 
 ```css
