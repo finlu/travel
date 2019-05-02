@@ -41,7 +41,7 @@ export default {
   },
   methods: {
     handleLetterClick (e) {
-      this.$emit('change', e.target.innerHTML)
+      this.$emit('change', e.target.innerText)
     },
     handleTouchStart () {
       this.touchStatus = true
@@ -53,7 +53,8 @@ export default {
           clearTimeout(this.timer)
         }
         this.timer = setTimeout(() => {
-          const touchY = e.touches[0].clientY - 73
+          const touchY = e.touches[0].clientY - 78
+          console.log(touchY)
           const index = Math.floor((touchY - this.startY) / 20)
           if (index >= 0 && index < this.letters.length) {
             this.$emit('change', this.letters[index])

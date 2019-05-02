@@ -17,7 +17,7 @@
             class="button-wrapper"
             v-for="item in hotCities"
             :key="item.id"
-            :ref="key">
+            ref="key">
             <div class="button">{{item.name}}</div>
           </div>
         </div>
@@ -26,13 +26,13 @@
         class="area"
         v-for="(item, key) in cities"
         :key="key">
-        <div class="title border-topbottom">{{ key }}</div>
+        <div class="title border-topbottom" :ref="key">{{ key }}</div>
         <div class="item-list">
           <div
             class="item border-bottom"
             v-for="innerItem of item"
             :key="innerItem.id">
-            {{innerItem}}
+            {{innerItem.name}}
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@
       <ul>
         <li
           class="search-item border-bottom"
-          v-for="item in result"
+          v-for="item in list"
           :key="item.id">
           {{item.name}}
         </li>
@@ -56,7 +56,7 @@ export default {
       }
       this.timer = setTimeout(() => {
         const result = []
-        for (let i in this.city) {
+        for (let i in this.cities) {
           this.cities[i].forEach((value) => {
             if (value.spell.indexOf(this.keyWord) > -1 || value.name.indexOf(this.keyWord > -1)) {
               result.push(value)
@@ -64,6 +64,7 @@ export default {
           })
         }
         this.list = result
+        console.log(this.list)
       }, 100)
     }
   }
@@ -85,4 +86,15 @@ export default {
       border-radius 3px
       font-size 12px
       color #666
+  .search-content
+    overflow hidden
+    position absolute
+    top 78px
+    left 0
+    right 0
+    bottom 0
+    background-color #eee
+    z-index: 1
+    .search-item
+      line-height 30px
 </style>
