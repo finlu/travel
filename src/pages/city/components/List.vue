@@ -6,7 +6,7 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">北京</div>
+            <div class="button">{{ currentCity }}</div>
           </div>
         </div>
       </div>
@@ -17,7 +17,7 @@
             class="button-wrapper"
             v-for="item in hotCities"
             :key="item.id"
-            ref="key">
+            @click="handleCityClick(item.name)">
             <div class="button">{{item.name}}</div>
           </div>
         </div>
@@ -26,12 +26,17 @@
         class="area"
         v-for="(item, key) in cities"
         :key="key">
-        <div class="title border-topbottom" :ref="key">{{ key }}</div>
+        <div
+          class="title border-topbottom"
+          :ref="key">
+          {{ key }}
+        </div>
         <div class="item-list">
           <div
             class="item border-bottom"
             v-for="innerItem of item"
-            :key="innerItem.id">
+            :key="innerItem.id"
+            @click="handleCityClick(innerItem.name)">
             {{innerItem.name}}
           </div>
         </div>
@@ -42,13 +47,18 @@
 
 <script>
 import Bscroll from 'better-scroll'
-
+import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'CityList',
   props: {
     hotCities: Array,
     cities: Object,
     letter: String
+  },
+  computed: {
+    ...mapState({
+      currentCity: 'city' // 将state中的city属性映射到当前对象的currentCity计算属性上
+    })
   },
   mounted () {
     this.scroll = new Bscroll(this.$refs.wrapper)
@@ -60,6 +70,18 @@ export default {
         this.scroll.scrollToElement(element) // 滑动到指定元素
       }
     }
+  },
+  methods: {
+    handleCityClick (city) {
+      // 方法1：需要在store中配置action和mutations
+      // this.$store.dispatch('changeCity', city) // 将city变量传递给store对象中的changeCity的action
+      // 方法2：只需要配置mutations
+      // this.$store.commit('changeCity', city)
+      // 通过mapMutations高级api将store中的mutations中的方法映射到当前组件中的methods对象中
+      this.changeCity(city)
+      this.$router.push('/')
+    },
+    ...mapMutations(['changeCity'])
   }
 }
 </script>

@@ -11,7 +11,8 @@
         <li
           class="search-item border-bottom"
           v-for="item in list"
-          :key="item.id">
+          :key="item.id"
+          @click="handleCityClick(item.name)">
           {{item.name}}
         </li>
         <li class="search-item border-bottom" v-if="hasNoData">
@@ -45,6 +46,12 @@ export default {
   props: {
     cities: Object
   },
+  methods: {
+    handleCityClick (city) {
+      this.$store.dispatch('changeCity', city)
+      this.$router.push('/')
+    }
+  },
   watch: {
     keyWord () {
       if (this.timer) {
@@ -58,13 +65,12 @@ export default {
         const result = []
         for (let i in this.cities) {
           this.cities[i].forEach((value) => {
-            if (value.spell.indexOf(this.keyWord) > -1 || value.name.indexOf(this.keyWord > -1)) {
+            if (value.spell.indexOf(this.keyWord) > -1 || value.name.indexOf(this.keyWord) > -1) {
               result.push(value)
             }
           })
         }
         this.list = result
-        console.log(this.list)
       }, 100)
     }
   }

@@ -318,3 +318,32 @@ npm install better-scroll --save
 ```
 
 使用条件：符合官方的dom结构
+
+
+vuex使用：
+1. 创建store实例
+2. 创建store实例中的state的数据
+3. 在根组件中注册store实例
+4. 在子组件中通过 `this.$store.state.xxx` 使用公共数据仓库中的内容
+
+如果想要改变state中的内容，需要进行以下步骤：
+1. 子组件向store提交一个action
+    ```vue
+    this.$store.dispatch('changeCity', city)
+    ```
+2. store中的action对象需要定义一个接收组件提交的action的方法
+    ```vue
+    actions: {
+      changeCity (ctx, city) {
+        ctx.commit('changeCity', city)
+      }
+    }
+    ```
+3. action 将动作提交到 mutations，最终完成 `state` 中数据的更新
+    ```vue
+    mutations: {
+        changeCity (state, city) {
+          state.city = city
+        }
+      }
+    ```
