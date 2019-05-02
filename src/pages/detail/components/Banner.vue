@@ -21,35 +21,35 @@
 </template>
 
 <script>
-  import CommonGallary from 'common/gallary/Gallary'
+import CommonGallary from 'common/gallary/Gallary'
 
-  export default {
-    name: 'DetailBanner',
-    components: {
-      CommonGallary
+export default {
+  name: 'DetailBanner',
+  components: {
+    CommonGallary
+  },
+  data () {
+    return {
+      showGallary: false,
+      imgs: [
+        'http://imgs.qunarzz.com/sight/p0/1904/7f/7fe202b7e0ebcd85a3.img.jpg_r_800x800_3e65b803.jpg',
+        'http://imgs.qunarzz.com/sight/p0/1904/5d/5d42c64f998ebf47a3.water.jpg_r_800x800_8c63b7c1.jpg'
+      ]
+    }
+  },
+  methods: {
+    handleBannerClick () {
+      console.log('click')
+      this.showGallary = true
     },
-    data() {
-      return {
-        showGallary: false,
-        imgs: [
-          'http://imgs.qunarzz.com/sight/p0/1904/7f/7fe202b7e0ebcd85a3.img.jpg_r_800x800_3e65b803.jpg',
-          'http://imgs.qunarzz.com/sight/p0/1904/5d/5d42c64f998ebf47a3.water.jpg_r_800x800_8c63b7c1.jpg'
-        ]
-      }
-    },
-    methods: {
-      handleBannerClick() {
-        console.log('click')
-        this.showGallary = true
-      },
-      handleGallaryClose() {
-        // console.log(this.showGallary)
-        this.showGallary = false
-        console.log('close')
-        // console.log(this.showGallary)
-      }
+    handleGallaryClose () {
+      // console.log(this.showGallary)
+      this.showGallary = false
+      console.log('close')
+      // console.log(this.showGallary)
     }
   }
+}
 </script>
 
 <style lang="stylus" scoped>
