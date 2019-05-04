@@ -45,7 +45,11 @@ export default {
     }
   },
   activated () {
-    window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('scroll', this.handleScroll) // 对window全局变量进行绑定，不仅仅在组件内有效
+  },
+  deactivated () {
+    // 组件被隐藏的时候触发
+    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
