@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'babel-polyfill'
 // 解决移动端点击300毫秒延时问题
 import fastClick from 'fastclick'
 // css初始化

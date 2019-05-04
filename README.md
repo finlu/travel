@@ -347,3 +347,8 @@ vuex使用：
         }
       }
     ```
+解决有些浏览器不支持 `promise` 的问题：
+安装第三方包：`babel-polyfill`
+```shell
+npm install babel-polyfill --save
+```
